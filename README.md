@@ -38,3 +38,25 @@ Your README must clearly explain the **complete step-by-step process** to naviga
 
 If any required component is missing, the code does not run, and the results do not match the report, **it will result in a deduction of marks**.
 
+
+### Note:
+While pushing to GitHub, password authentication will NOT work.
+
+You must use a Personal Access Token (PAT) instead.
+
+Steps:
+
+Go to: https://github.com/settings/tokens
+Click “Generate new token (classic)”
+Select repo permission
+Generate and copy the token
+
+Now push your code:
+
+git push origin main
+
+When prompted:
+
+Username → your GitHub username
+Password → paste the token (NOT your GitHub password)
+
