@@ -44,7 +44,7 @@ While pushing to GitHub, password authentication will NOT work.
 
 You must use a Personal Access Token (PAT) instead.
 
-Steps:
+## Steps:
 
 Go to: https://github.com/settings/tokens
 
@@ -54,11 +54,11 @@ Select repo permission
 
 Generate and copy the token
 
-Now push your code:
+## Now push your code:
 
 git push origin main
 
-When prompted:
+## When prompted:
 
 Username → your GitHub username
 Password → paste the token (NOT your GitHub password)
