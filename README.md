@@ -9,7 +9,7 @@ All project submissions must be made in this repository under the `Project/` fol
 Each team must create a single folder (anyone of the team member) using the format:
 
 name_roll  
-(e.g., **agniva_20211234**)
+(e.g., **agniva_2410701**)
 
 ## Required Structure
 
