@@ -1,2 +1,40 @@
 # LCS-334-434-684
-ECS 334/434/684 Linear Control Systems
+
+# Course Project Submission (LCS-334/434/684)
+
+## Submission Instructions
+
+All project submissions must be made in this repository under the `Project/` folder.
+
+Each team must create a single folder (anyone of the team member) using the format:
+
+name_roll  
+(e.g., **agniva_20211234**)
+
+## Required Structure
+
+Inside your **Project** folder, maintain the following structure:
+
+Project/name_roll/
+
+- README.md  
+- requirements.txt  
+- src/  
+- logs/  
+- results/  
+- report/report.pdf  
+
+## README Instructions
+
+Your README must clearly explain the **complete step-by-step process** to navigate **your repository and run your project**.
+
+ We will execute your code based on the **step-by-step instructions** provided in **README.md** and verify the results with **your submitted report** at **report/report.pdf**.
+
+**It is your responsibility to**:
+- Provide correct and complete dependency requirements  
+- Ensure the project runs without modification  
+- Include proper log files and outputs
+- Organise the README.md file properly  
+
+If any required component is missing, the code does not run, and the results do not match the report, **it will result in a deduction of marks**.
+
