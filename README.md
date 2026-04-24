@@ -47,8 +47,11 @@ You must use a Personal Access Token (PAT) instead.
 Steps:
 
 Go to: https://github.com/settings/tokens
+
 Click “Generate new token (classic)”
+
 Select repo permission
+
 Generate and copy the token
 
 Now push your code:
