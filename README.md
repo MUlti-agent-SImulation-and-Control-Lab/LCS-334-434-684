@@ -17,12 +17,12 @@ Inside your **Project** folder, maintain the following structure:
 
 Project/name_roll/
 
-- README.md -->> "Contain all instruction to navigate your repo"
-- requirements.txt -->> "Contains all the dependencies" 
-- src/ -->> "Source code that you did in your project"
-- logs/ -->> "If there is any model then upload the model weight"
-- results/ -->> "All the result (means plot and all)"
-- report/report.pdf -->> "The main report"
+- README.md       -->>             "Contain all instruction to navigate your repo"
+- requirements.txt        -->>             "Contains all the dependencies" 
+- src/          -->>                 "Source code that you did in your project"
+- logs/          -->>               "If there is any model then upload the model weight"
+- results/            -->>             "All the result (means plot and all)"
+- report/report.pdf          -->>            "The main report"
 
 ## README Instructions
 
