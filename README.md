@@ -40,6 +40,8 @@ If any required component is missing, the code does not run, and the results do 
 
 
 ## Note:
+Always Pull Before Push.
+
 While pushing to GitHub, password authentication will NOT work.
 
 You must use a Personal Access Token (PAT) instead.
