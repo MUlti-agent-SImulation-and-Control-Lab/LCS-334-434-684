@@ -39,7 +39,7 @@ Your README must clearly explain the **complete step-by-step process** to naviga
 If any required component is missing, the code does not run, and the results do not match the report, **it will result in a deduction of marks**.
 
 
-### Note:
+## Note:
 While pushing to GitHub, password authentication will NOT work.
 
 You must use a Personal Access Token (PAT) instead.
