@@ -1,0 +1,1 @@
+timestamp,wp_idx,x,y,yaw,pitch,x_ref,y_ref,yaw_ref,dist_err,yaw_err,gain_L,gain_R,v_raw,w_raw,v_final,w_final,grav_comp
