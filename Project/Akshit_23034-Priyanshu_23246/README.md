@@ -82,7 +82,7 @@ report/Final_Simulation_report.pdf
 ---
 
 ## Notes
-
+* All the result plot and graphs are already submitted in the `Final_Simulation_report.pdf`
 * Ensure all files remain in their respective folders
 * No modification is required to run the code
 * The project executes successfully using the specified MATLAB version
