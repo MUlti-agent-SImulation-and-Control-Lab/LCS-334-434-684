@@ -6,7 +6,7 @@
 
 ---
 
-## 📁 Repository Structure
+## Repository Structure
 
 ```
 kshitiz_23161-agolika_23027/
@@ -26,7 +26,7 @@ kshitiz_23161-agolika_23027/
 
 ---
 
-## ⚙️ Step-by-Step Instructions to Run
+## Step-by-Step Instructions to Run
 
 ### Prerequisites
 - Python 3.10 or later
@@ -80,7 +80,7 @@ The detailed evaluation report is at `report/report.pdf`.
 
 ---
 
-## 🧪 What Each Mode Does
+##  What Each Mode Does
 
 | Mode | Controller | Obstacles | Solver | Key Feature |
 |------|-----------|-----------|--------|-------------|
@@ -91,7 +91,7 @@ The detailed evaluation report is at `report/report.pdf`.
 
 ---
 
-## 📊 Summary of Results
+## Summary of Results
 
 | Metric | LQR | Tube MPC | Adaptive NMPC | Hybrid |
 |--------|-----|----------|---------------|--------|
@@ -101,6 +101,6 @@ The detailed evaluation report is at `report/report.pdf`.
 
 ---
 
-## 📝 Notes
+## Notes
 - The ROS2 Gazebo deployment (Docker-based) is documented in the full GitHub repository linked above.
 - Simulation logs (CSV telemetry) are in the `logs/` directory for post-run debugging.
