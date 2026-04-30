@@ -1,0 +1,9 @@
+For running vscode_mef_exploration.ipynb file
+
+numpy==1.24.4
+matplotlib==3.7.5
+notebook==7.0.6
+ipython==8.12.3
+
+For ros_exploration.py
+Use lab PC, it has all the ROS dependencies installed.
