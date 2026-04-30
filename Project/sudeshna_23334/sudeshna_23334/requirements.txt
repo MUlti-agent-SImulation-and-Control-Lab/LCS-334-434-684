@@ -1,0 +1,17 @@
+# Project Dependencies & Requirements:
+
+# Base Software:
+MATLAB R2023b or newer versions (R2025b for the most accurate results)
+
+# Core Simulation Toolboxes:
+Simulink
+Simscape
+Simscape Multibody
+
+# Control and Optimization Toolboxes:
+Model Predictive Control Toolbox
+Control System Toolbox
+Optimization Toolbox
+
+# Note: In some MATLAB versions, bipedal walking models  often use this MathWorks File Exchange add-on for foot-to-ground contact:
+Simscape Multibody Contact Forces Library
