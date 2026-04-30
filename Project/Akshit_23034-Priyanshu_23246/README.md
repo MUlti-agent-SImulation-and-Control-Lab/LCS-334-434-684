@@ -15,9 +15,10 @@ Akshit_23034-Priyanshu_23246/
 ├── requirements.txt
 ├── src/                # MATLAB source code files
 |── reference_paper.pdf - Event-Triggered_Polynomial_Control_for_Trajectory_Tracking_by_Unicycle_Robots.pdf
-├── logs/               # (Not used / placeholder)
+|── logs/               # (Not used / placeholder)
+└── results/
+    └── Final_Simulation_report.pdf - All results and Output Images are present here
 └── report/
-    ├── Final_Simulation_report.pdf - All results and Output Images are present here
     └── Final_theory_report.pdf 
 ```
 
