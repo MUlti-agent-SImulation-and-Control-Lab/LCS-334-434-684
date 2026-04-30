@@ -1,0 +1,9 @@
+MATLAB R2020b or later
+
+Required:
+- Base MATLAB only
+
+No additional toolboxes or external dependencies required.
+Tested with:
+- Continuous-time simulation using explicit Euler integration
+- Custom function handles for local cost gradients

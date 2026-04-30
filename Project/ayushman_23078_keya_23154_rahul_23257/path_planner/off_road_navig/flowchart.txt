@@ -1,0 +1,109 @@
+
+┌─────────────────────────────────────────────────────────────────┐
+│                    INPUT: LiDAR Point Cloud                      │
+│                  (.las / .pcd / .ply / .npy)                     │
+└────────────────────────────┬────────────────────────────────────┘
+                             │
+                             ▼
+┌─────────────────────────────────────────────────────────────────┐
+│  PREPROCESSOR  (lidar/preprocessor.py)                          │
+│  • Statistical outlier removal (KD-tree, σ threshold)           │
+│  • Voxel downsampling → uniform density                         │
+│  • Ground normalisation (z=0 at ground plane)                   │
+└────────────────────────────┬────────────────────────────────────┘
+                             │
+                             ▼
+┌─────────────────────────────────────────────────────────────────┐
+│  FEATURE EXTRACTOR  (terrain/feature_extractor.py)              │
+│  For each point, query K neighbours within radius r:            │
+│  • PCA on neighbourhood → normal vector → slope_deg             │
+│  • RMS residual from plane → roughness                          │
+│  • λ_min / λ_sum → curvature                                    │
+│  • Raw z → height_above_ground                                  │
+│  • LiDAR return intensity                                        │
+│  • Intensity std of neighbours → texture                        │
+│  • Wetness proxy = f(low intensity, smooth, low z)              │
+│  • Point density in radius                                       │
+│  Output: (N, 8) feature matrix                                  │
+└────────────────────────────┬────────────────────────────────────┘
+                             │
+                             ▼
+┌─────────────────────────────────────────────────────────────────┐
+│  TERRAIN SEGMENTER  (terrain/segmenter.py)                      │
+│  TerrainMLP [8→64→128→64→5] or heuristic fallback              │
+│  Output per point:                                               │
+│    0=GROUND  1=ROCK  2=WATER  3=VEGETATION  4=UNKNOWN           │
+└────────────────────────────┬────────────────────────────────────┘
+                             │
+                             ▼
+┌─────────────────────────────────────────────────────────────────┐
+│  RISK ESTIMATOR  (terrain/risk_estimator.py)                    │
+│  RiskMLP [9→64→32→1] or weighted heuristic blend               │
+│  risk = 0.30×label + 0.20×slope + 0.15×roughness               │
+│        + 0.20×wetness + 0.10×height + 0.05×curvature           │
+│  Output: (N,) float in [0, 1] per point                        │
+└────────────────────────────┬────────────────────────────────────┘
+                             │
+                             ▼
+┌─────────────────────────────────────────────────────────────────┐
+│  GRAPH BUILDER  (graph/builder.py)                              │
+│                                                                  │
+│  1. 2.5D voxel grid (voxel_size=2.0m default)                   │
+│     Each occupied cell → Node3D                                  │
+│     Node attributes: x,y,z centroid, aggregated risk,           │
+│                       dominant label, slope, roughness, wetness  │
+│                                                                  │
+│  2. KD-tree on node positions                                    │
+│     Connect all pairs within connect_radius (5.5m default)      │
+│     Skip if either node risk ≥ max_risk threshold               │
+│                                                                  │
+│  3. Edge cost = dist × (1 + risk_blend + slope_penalty²)        │
+│     Prune if slope > 35° or risk_blend ≥ threshold              │
+│                                                                  │
+│  Output: Dict[id→Node3D], List[Edge]                            │
+└────────────────────────────┬────────────────────────────────────┘
+                             │
+                             ▼
+┌─────────────────────────────────────────────────────────────────┐
+│  NEAREST NODE LOOKUP                                            │
+│  Map user's (x,y,z) start/goal → closest traversable Node3D    │
+└────────────────────────────┬────────────────────────────────────┘
+                             │
+                             ▼
+┌─────────────────────────────────────────────────────────────────┐
+│  RISK-AWARE A*  (pathfinding/algo.py)                           │
+│                                                                  │
+│  Open heap: (f_score, node_id)                                  │
+│  f = g_cost + heuristic + λ × joint_risk_lookahead              │
+│                                                                  │
+│  At each expansion of node N → neighbour B:                     │
+│  ┌──────────────────────────────────────────────────────────┐   │
+│  │  JOINT RISK WINDOW  (pathfinding/joint_risk.py)          │   │
+│  │  window = last (W-1) nodes on current path + [B]         │   │
+│  │  joint_risk = 1 - ∏(1 - riskᵢ)                          │   │
+│  │  turn_penalty = Σ heading_change × slope_weight          │   │
+│  │  if joint_risk > max_window_risk → PRUNE BRANCH          │   │
+│  └──────────────────────────────────────────────────────────┘   │
+│                                                                  │
+│  Path cache: store last 2W nodes per open node (memory opt)     │
+│  Output: PathResult (path, cost, dist, segment_risks)           │
+└────────────────────────────┬────────────────────────────────────┘
+                             │
+                             ▼
+┌─────────────────────────────────────────────────────────────────┐
+│  PATH SMOOTHER  (pathfinding/path_smoother.py)                  │
+│  • Parameterise waypoints by cumulative arc length              │
+│  • Fit cubic spline (CubicSpline per axis)                      │
+│  • Resample at uniform density (2 pts/m default)                │
+│  • Compute per-waypoint curvature κ = |r'×r''| / |r'|³         │
+│  Output: smooth x,y,z arrays + curvature profile               │
+└────────────────────────────┬────────────────────────────────────┘
+                             │
+                             ▼
+┌─────────────────────────────────────────────────────────────────┐
+│  OUTPUT                                                          │
+│  • 3D waypoint list (robot sends these to motion controller)    │
+│  • Joint risk profile along path (segment-by-segment)           │
+│  • Path statistics (distance, cost, max/mean window risk)       │
+│  • Visualizations (terrain labels, risk heatmap, graph+path)    │
+└─────────────────────────────────────────────────────────────────┘
