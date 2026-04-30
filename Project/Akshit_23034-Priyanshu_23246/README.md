@@ -44,7 +44,7 @@ Akshit_23034-Priyanshu_23246/
 The project reports are available in the `report/` folder:
 
 * `Final_Simulation_report.pdf` → Contains simulation results and analysis
-* `Final_theory_report.pdf` → Contains theoretical background and derivations
+* `Final_theory_report.pdf` → Contains theoretical background and derivations given in the paper
 
 ---
 
