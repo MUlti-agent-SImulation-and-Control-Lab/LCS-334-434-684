@@ -1,24 +1,39 @@
-Work Done:
-1. Created Dynamic environments(pedestrians, multiple vehicles, obstacles, etc.)
-2. Test algorithms
-3. In model architecture, replaced LSTM with LTCs
-4. SAC perform better than DQN
-5. Results(averge over 5 experiments)
+Installation Guide
+1. Install Webots Simulator
+Download and install Webots 2025a (or latest) from the official Cyberbotics website:
+https://cyberbotics.com/
 
-Future Work:
-1. Test with high-speed vehicles
-2. Sensor-fusion
+2. Set Up Python Dependencies
+Ensure you have Python 3.9+ installed. Install the required libraries via pip:
 
-LCS_project_Webots: contains all the files to run the environments
-LCS_project_results: contains all the results
+Bash
+pip install torch numpy matplotlib
 
-Hardware requirements and runtime:
--RTX 5060 8GB VRAM
--run for ~10-12 hours
+3. Configure Webots Python Path
+Open Webots.
 
-To run it:
-1. Install Webots: https://cyberbotics.com/
-2. Open LCS_project_Webots/city.wbt
-3. Install all the dependencies:
-   pip install torch, numpy, matplotlib
-4. Recommended: Run on GPU
+Go to Preferences > Python Command.
+
+Set the path to your local Python executable (e.g., python3 or the path to your virtual environment).
+
+How to Run the Simulator
+Step 1: Loading the Environment
+Launch Webots.
+
+Go to File > Open World....
+
+Navigate to LCS_project_Webots/city.wbt and click Open.
+
+Step 2: Selecting the Controller
+In the Webots Scene Tree (left sidebar), locate the Robot/UGV node.
+
+Expand the node and find the controller field.
+
+Select the desired strategy:
+
+LCS_code_updated.py (Proposed LTC-SAC)
+
+Step 3: Execution
+Click the Real-time run (single arrow) or Fast run (double arrow) button at the top of the interface.
+
+Training logs and performance plots will be automatically generated in the LCS_project_results folder.
