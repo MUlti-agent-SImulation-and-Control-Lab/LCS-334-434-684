@@ -1,1 +1,5 @@
+MATLAB R2020 or above
 
+# Notes:
+# This project is implemented using MATLAB scripts.
+# No external libraries or toolboxes are required beyond standard MATLAB functions.
