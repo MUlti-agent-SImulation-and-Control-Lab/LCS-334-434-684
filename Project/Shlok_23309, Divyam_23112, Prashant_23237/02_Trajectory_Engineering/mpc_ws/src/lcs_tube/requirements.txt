@@ -1,0 +1,14 @@
+ament_index_python==1.4.1
+crazyflie_interfaces==1.0.0
+cvxpy==1.7.5
+geometry_msgs==4.9.1
+launch_ros==0.19.13
+matplotlib==3.10.9
+nav_msgs==4.9.1
+numpy==1.21.5
+pypoman==1.2.0
+rclpy==3.3.21
+scipy==1.8.0
+setuptools==82.0.1
+setuptools==59.6.0
+std_msgs==4.9.1

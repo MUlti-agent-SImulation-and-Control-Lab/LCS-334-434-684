@@ -1,0 +1,62 @@
+# colcon build outputs
+build/
+install/
+log/
+build.log
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+*.egg-link
+*.so
+.eggs/
+
+# Editor / IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+
+# ROS 2 runtime artifacts
+.ros/
+*.bag
+*.db3
+*.mcap
+
+# Wheels / venv
+*.whl
+.venv/
+venv/
+
+# pytest / coverage
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Arbitrary logs
+*.log
+
+# CMake / make outputs (in case anything inside CrazySim is rebuilt locally)
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+Makefile.cmake
+
+# Backup files
+*.bak
+*.orig
+
+# Local-only docker / SITL artifacts
+.docker/
+.cache/
+.local/
+.bash_history
+
+# Generated SDFs (sitl_singleagent.sh writes these to /tmp; ignore in case anyone copies them in)
+crazyflie_*.sdf
+crazyflie_*.sdf.last_generated

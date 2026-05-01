@@ -1,0 +1,43 @@
+# Phase 2 SITL config — single Crazyflie talking to cf2 firmware via CFLib UDP loopback.
+# fileversion 3 schema. Backup of original radio config is at crazyflies.yaml.phase1.bak.
+fileversion: 3
+
+robots:
+  cf_1:
+    enabled: true
+    uri: udp://127.0.0.1:19850
+    initial_position: [0.0, 0.0, 0.0]
+    type: cf_sim
+
+# Definition of the various robot types
+robot_types:
+  cf_sim:
+    motion_capture:
+      tracking: "none"   # not librigidbodytracker -> no mocap rigid body
+    big_quad: false
+    battery:
+      voltage_warning: 3.8
+      voltage_critical: 3.7
+    # Set commander.enHighLevel=1 on connect so takeoff/land services actually
+    # engage the firmware high-level commander. Without this, the takeoff
+    # service goes through Crazyswarm2 but the firmware ignores it.
+    firmware_params:
+      commander:
+        enHighLevel: 1
+    firmware_logging:
+      enabled: true
+      default_topics:
+        # Crazyswarm2 only creates per-cf publishers when these are set.
+        pose:
+          frequency: 100
+        odom:
+          frequency: 100
+
+  # Kept for parity with upstream — unused while only cf_sim is referenced.
+  cf21:
+    motion_capture:
+      tracking: "none"
+    big_quad: false
+    battery:
+      voltage_warning: 3.8
+      voltage_critical: 3.7

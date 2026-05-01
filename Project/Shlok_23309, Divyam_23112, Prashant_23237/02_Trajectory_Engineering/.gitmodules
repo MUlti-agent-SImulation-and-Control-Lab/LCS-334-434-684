@@ -1,0 +1,6 @@
+[submodule "CrazySim"]
+	path = CrazySim
+	url = https://github.com/gtfactslab/CrazySim.git
+[submodule "crazyflie-clients-python"]
+	path = crazyflie-clients-python
+	url = https://github.com/bitcraze/crazyflie-clients-python.git

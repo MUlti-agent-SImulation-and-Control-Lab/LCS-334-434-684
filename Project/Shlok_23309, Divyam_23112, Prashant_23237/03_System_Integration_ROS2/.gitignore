@@ -1,0 +1,37 @@
+# ROS 2 Build Artifacts
+build/
+install/
+log/
+colcon_test_results/
+
+# Python artifacts
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.pytest_cache/
+.tox/
+.coverage
+.cache/
+nosetests.xml
+coverage.xml
+*.db
+*.log
+
+# Editor-specific files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Gazebo / Simulation logs
+*.sdf.erb
+*.world.erb
+model.config.erb
+/tmp/
+
+# Repository specific
+.python-version
+requirements.txt.bak

@@ -1,0 +1,30 @@
+# Python dependencies for native (non-docker) install of CrazySim ET-Tube MPC.
+# Tested on Ubuntu 22.04 + Python 3.10.
+#
+# Install with:  pip install -r requirements.txt
+# Plus the CrazySim cflib fork (NOT pip cflib) — installed separately:
+#     pip install --no-deps CrazySim/crazyflie-lib-python
+
+# build tooling — needed for setup.py-based packages under colcon
+setuptools>=61,<80
+wheel
+
+# MPC solver stack
+cvxpy>=1.7
+osqp>=1.1
+clarabel>=0.10
+
+# Numerical
+numpy>=2.2
+scipy>=1.14
+
+# mRPI tube offline computation (only needed if you re-run tube_calculation.py)
+pypoman>=1.2
+pycddlib>=3.0      # requires `apt install libcdd-dev libgmp-dev` on the host first
+cvxopt>=1.3
+
+# Plotting (only needed for sim_stress_tests.py figure output)
+matplotlib>=3.10   # 3.10+ required for numpy 2.x compat
+
+# Crazyswarm2 server's tf import chain — must match numpy 2.x
+transforms3d>=0.4
