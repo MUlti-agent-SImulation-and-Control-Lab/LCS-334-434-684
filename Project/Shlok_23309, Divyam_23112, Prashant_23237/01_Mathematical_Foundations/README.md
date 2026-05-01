@@ -13,7 +13,7 @@ Install the required python packages from [requirements.txt](file:///home/ptc/ro
 While every effort has been ensured to list all relevant python packages in requirements.txt, some dependencies might be missing. Please see pip_requirements.txt for an exhaustive list of packages installed in the system.
 It is possible to feed the requirements file directly to pip using the `-r` flag:
 ```bash
-pip install -r gemini_requirements.txt
+pip install -r requirements.txt
 ```
 
 
