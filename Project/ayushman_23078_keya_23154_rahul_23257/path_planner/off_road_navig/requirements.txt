@@ -1,0 +1,11 @@
+numpy>=1.24.0
+scipy>=1.10.0
+scikit-learn>=1.3.0
+torch>=2.0.0
+open3d>=0.17.0
+laspy>=2.4.0          # .las / .laz point cloud I/O
+matplotlib>=3.7.0
+networkx>=3.1
+rich>=13.0.0           # CLI dashboard
+tqdm>=4.65.0
+pykdtree>=1.3.7        # Fast KD-tree
